@@ -23,20 +23,21 @@ h1{
 }
 
 .categories {
+    margin: 2%;
     display: flex; 
     align-items: center; 
     background-color: transparent; 
     border: solid 1px black;
     border-radius: 5%; 
-    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    cursor: pointer;
     
 }
 
 .categories h1 {
-    margin-left: 10px; /* Margen a la izquierda del título */
-    font-family: "Poppins", sans-serif; /* Incluye la fuente para el título */
-    font-weight: 5px; /* Ajusta el peso de la fuente según lo necesites */
-    font-style: normal; /* Establece el estilo de la fuente */
-    color: black; /* Color del texto */
+    margin: 2%; 
+    size: 10px;
+    font-family: "Poppins", sans-serif; 
+    font-style: normal; 
+    color: black; 
 }
 

@@ -19,7 +19,7 @@ const Navbar = () => {
             <div className={Style.navbar}>
             <img className={Style.logo} src={logo} alt='logo'/>
             <button className={Style.categories} onClick={() => setNavBarOpen(!navBarOpen)}>
-                <FiAlignJustify size={15} />
+                <FiAlignJustify size={27} />
                 <h1>Categorias</h1>
             </button>
             </div>
