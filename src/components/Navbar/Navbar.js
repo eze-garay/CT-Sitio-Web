@@ -50,34 +50,42 @@ const Navbar = () => {
                     </Link>
                 </div>
             </div>
-
-            <div className={navBarOpen ? `${Style.navbarOpen}` : ''}>
-            <img className={`${Style.logo2}`} src={logo} alt='logo'/>
-            <button className={`${Style.closeButton}`} onClick={() => setNavBarOpen(false)}>×</button>
-            <ul>
-                {links.map((link) => (
-                    <li key={link.id}>
-                        <Link
-                            to={link.to}
-                            onClick={() => handleLinkClick(link.id)} 
-                            className={activeLink === link.id ? Style.activeLink : null} 
-                        >
-                            {link.link}
-                        </Link>
-                        {activeLink === link.id && (
-                            <ul>
-                                {link.options.map((option, index) => (
-                                    <li key={index}>{option}</li>
-                                ))}
-                            </ul>
-                        )}
-                    </li>
-                ))}
-                </ul>
-            </div>
-
+    
+            {navBarOpen && (
+                <div className={Style.menuContainer}>
+                    <div className={Style.menuTopOpen}>
+                    <div className={Style.LogoMenuOpen}>
+                        <img src={logo} alt='logo' />
+                    </div>
+                    <div className={Style.closeButtonContainer}>
+                        <button className={Style.closeButton} onClick={() => setNavBarOpen(false)}>×</button>
+                    </div>
+                    </div>
+                    <ul className={Style.menuList}>
+                        {links.map((link) => (
+                            <li key={link.id}>
+                                <Link
+                                    to={link.to}
+                                    onClick={() => handleLinkClick(link.id)} 
+                                    className={activeLink === link.id ? Style.activeLink : null} 
+                                >
+                                    {link.link}
+                                </Link>
+                                {activeLink === link.id && (
+                                    <ul>
+                                        {link.options.map((option, index) => (
+                                            <li key={index}>{option}</li>
+                                        ))}
+                                    </ul>
+                                )}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            )}
         </div>
     );
+    
 };
 
 export default Navbar;
