@@ -103,17 +103,17 @@
 .menuContainer {
     position: fixed;
     top: 0;
-    left: -80%; /* Posición inicial del menú fuera de la pantalla hacia la izquierda */
+    left: -80%; 
     width: 40%;
     height: 100%;
     background-color: #f5f5f5;
     z-index: 999;
     overflow-y: auto;
-    transition: left 0.3s ease; /* Agregar transición para el cambio de posición */
+    transition: left 0.3s ease; 
 }
 
 .menuContainer.open {
-    left: 0; /* Posición del menú cuando está abierto */
+    left: 0; 
 }
 .menuTopOpen {
     
