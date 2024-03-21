@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import Style from './Navbar.module.css';
 import { FiAlignJustify } from "react-icons/fi";
@@ -5,6 +6,8 @@ import logo from './assests/logo.png';
 import { Link } from 'react-router-dom';
 import { TbSearch } from "react-icons/tb";
 import { FaRegCommentDots } from "react-icons/fa";
+import { GoChevronDown } from "react-icons/go";
+import { GoChevronRight } from "react-icons/go";
 
 const Navbar = () => {
     const [navBarOpen, setNavBarOpen] = useState(false);
@@ -14,7 +17,7 @@ const Navbar = () => {
         { id: 1, link: "Aspiradoras", to: "/Aspiradoras", options: ["Opción 1", "Opción 2", "Opción 3"] },
         { id: 2, link: "Cocinas", to: "/Cocinas", options: ["Opción 4", "Opción 5", "Opción 6"] },
         { id: 3, link: "Soporte", to: "/Soporte", options: [] },
-        { id: 4, link: "Home", to: "/Home", options: [] }
+        // { id: 4, link: "Home", to: "/Home", options: [] }
     ];
 
     const handleLinkClick = (linkId) => {
@@ -51,41 +54,45 @@ const Navbar = () => {
                 </div>
             </div>
     
-            {navBarOpen && (
-                <div className={Style.menuContainer}>
-                    <div className={Style.menuTopOpen}>
-                    <div className={Style.LogoMenuOpen}>
-                        <img src={logo} alt='logo' />
+            <div className={`${Style.menuContainer} ${navBarOpen ? Style.open : ''}`}>
+                <div className={Style.menuTopOpen}>
+                    <div>
+                        <img className={Style.LogoMenuOpen} src={logo} alt='logo' />
                     </div>
                     <div className={Style.closeButtonContainer}>
                         <button className={Style.closeButton} onClick={() => setNavBarOpen(false)}>×</button>
                     </div>
-                    </div>
-                    <ul className={Style.menuList}>
-                        {links.map((link) => (
-                            <li key={link.id}>
-                                <Link
-                                    to={link.to}
-                                    onClick={() => handleLinkClick(link.id)} 
-                                    className={activeLink === link.id ? Style.activeLink : null} 
-                                >
-                                    {link.link}
-                                </Link>
-                                {activeLink === link.id && (
-                                    <ul>
-                                        {link.options.map((option, index) => (
-                                            <li key={index}>{option}</li>
-                                        ))}
-                                    </ul>
-                                )}
-                            </li>
-                        ))}
-                    </ul>
                 </div>
-            )}
+                <hr className={Style.divider} />
+                <ul className={Style.menuList}>
+                    {links.map((link) => (
+                        <li key={link.id}>
+                            <Link
+                                to={link.to}
+                                onClick={() => handleLinkClick(link.id)} 
+                                className={activeLink === link.id ? Style.activeLink : null} 
+                            >
+                                <span>{link.link}</span>
+                                <span className={Style.chevronIcon}>{link.link === "Cocinas" || link.link === "Aspiradoras" ? <GoChevronDown/> : <GoChevronRight/>}</span>
+                            </Link>
+                            {activeLink === link.id && (
+                                <ul>
+                                    {link.options.map((option, index) => (
+                                        <li key={index}>
+                                            <Link to={`${link.to}/${option}`} className={Style.optionLink}>
+                                                {option}
+                                                <span className={Style.chevronIcon}><GoChevronRight/></span>
+                                            </Link>
+                                        </li>
+                                    ))}
+                                </ul>
+                            )}
+                        </li>
+                    ))}
+                </ul>
+            </div>
         </div>
     );
-    
 };
 
 export default Navbar;
