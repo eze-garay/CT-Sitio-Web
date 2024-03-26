@@ -14,8 +14,8 @@ const Navbar = () => {
     const [activeLink, setActiveLink] = useState(null);
 
     const links = [
-        { id: 1, link: "Aspiradoras", to: "/Aspiradoras", options: ["Opción 1", "Opción 2", "Opción 3"] },
-        { id: 2, link: "Cocinas", to: "/Cocinas", options: ["Opción 4", "Opción 5", "Opción 6"] },
+        { id: 1, link: "Aspiradoras", to: "/Aspiradoras", options: ["Robot Aspiradora", "Aspiradoras Verticales", "Fregonas Electricas"] },
+        { id: 2, link: "Cocinas", to: "/Cocinas", options: ["Robot Cocina", "Freidora sin aceite", "Cafetera"] },
         { id: 3, link: "Soporte", to: "/Soporte", options: [] },
         // { id: 4, link: "Home", to: "/Home", options: [] }
     ];
@@ -32,7 +32,9 @@ const Navbar = () => {
         <div>
             <div className={Style.navbar}>
                 <div className={Style.navbar1}>
-                    <img className={Style.logo} src={logo} alt='logo'/>
+                <Link to="/">
+                <img className={Style.logo} src={logo} alt='logo'/>
+                </Link>
                 </div>
                 <div className={Style.navbar2}>
                     <button className={Style.categories} onClick={() => setNavBarOpen(!navBarOpen)}>

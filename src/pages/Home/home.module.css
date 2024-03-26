@@ -1,0 +1,10 @@
+
+.conteiner{
+    display: flex;
+    flex-direction: column;
+}
+
+.div {
+    margin-bottom: 10%;
+    border: 1px solid black; 
+}
